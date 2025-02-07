@@ -1,7 +1,7 @@
 /* Full-screen terminal look */
 body {
-    background-color: black;
-    color: #00ff00;
+    background-color: #0d0d0d;
+    color: #d1d1d1;
     font-family: "Courier New", monospace;
     display: flex;
     justify-content: center;
@@ -14,10 +14,9 @@ body {
 .terminal-container {
     width: 80%;
     max-width: 600px;
-    background-color: black;
+    background-color: #0d0d0d;
     padding: 15px;
-    border: 2px solid #00ff00;
-    box-shadow: 0 0 10px #00ff00;
+    overflow-y: auto;
 }
 
 /* Terminal output */
@@ -26,9 +25,14 @@ body {
     white-space: pre-wrap;
 }
 
+/* System messages */
+.system {
+    color: #b5b08a; /* Muted yellow like Crosh */
+}
+
 /* Error messages */
 .error {
-    color: red;
+    color: #ff5555; /* Soft red for errors */
 }
 
 /* Input line */
@@ -39,7 +43,7 @@ body {
 
 /* Terminal prompt */
 .prompt {
-    color: #00ff00;
+    color: #d1d1d1; /* Off-white for prompt */
     margin-right: 5px;
 }
 
@@ -47,27 +51,9 @@ body {
 #terminal-input {
     background: none;
     border: none;
-    color: #00ff00;
+    color: #d1d1d1;
     font-size: 16px;
     font-family: inherit;
     width: 100%;
     outline: none;
-}
-.buttons {
-    margin-top: 10px;
-}
-
-button {
-    background-color: #007acc;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 3px;
-}
-
-button:hover {
-    background-color: #005f8d;
 }
