@@ -7,23 +7,21 @@ html, body {
     background-color: #0d0d0d;
     color: #d1d1d1;
     font-family: "Courier New", monospace;
-    display: flex;
-    align-items: flex-start;  /* Align terminal to the top */
-    justify-content: flex-start; /* Align to the left */
 }
 
-/* Terminal window (positioned at top-left) */
+/* Terminal window (fixed to top-left) */
 .terminal-container {
-    width: 60vw; /* Adjust width for a realistic terminal size */
-    max-width: 800px; /* Prevent it from getting too wide */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60vw; /* Adjust width to your preference */
+    max-width: 800px; /* Prevent it from stretching too much */
     height: 80vh; /* Allows scrolling like a real terminal */
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
     padding: 15px;
+    overflow-y: auto;
 }
 
-/* Terminal output (scrollable) */
+/* Terminal output (scrollable history) */
 #terminal {
     flex-grow: 1;
     overflow-y: auto;
@@ -53,4 +51,5 @@ html, body {
     width: 100%;
     outline: none;
 }
+
 
