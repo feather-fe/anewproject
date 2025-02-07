@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const command = args.shift();
 
                 if (command === "login") {
-                    await handleLoginCommand(args); // Call the login function
+                    await getPasswordByUsername(args); // Call the login function
                 } else if (command === "signup") {
                     appendOutput(`Signing up as ${args[0]}...`);
                 } else if (command === "help") {
