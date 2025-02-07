@@ -38,3 +38,22 @@ document.addEventListener("DOMContentLoaded", () => {
         terminal.appendChild(output);
     }
 });
+document.getElementById("terminal-input").addEventListener("keydown", async function(event) {
+    if (event.key === "Enter") {
+        const input = this.value.trim();
+        this.value = "";
+
+        if (input.length > 0) {
+            printToTerminal(`$ ${input}`, "user");
+
+            const args = input.split(" ");
+            const command = args.shift();
+
+            if (command === "login") {
+                await handleLoginCommand(args); // Call the login function
+            } else {
+                printToTerminal("Command not recognized.", "error");
+            }
+        }
+    }
+});
