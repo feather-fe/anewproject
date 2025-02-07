@@ -51,5 +51,32 @@ html, body {
     width: 100%;
     outline: none;
 }
+/* Input section (stays at bottom, now with a visible box) */
+.input-line {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+    background: #1a1a1a; /* Dark gray box to separate input area */
+    border-top: 1px solid #333; /* Slight border for separation */
+}
+
+/* Terminal prompt */
+.prompt {
+    color: #d1d1d1;
+    margin-right: 5px;
+}
+
+/* Terminal input */
+#terminal-input {
+    background: none;
+    border: none;
+    color: #d1d1d1;
+    font-size: 16px;
+    font-family: inherit;
+    width: 100%;
+    outline: none;
+    padding: 5px;
+}
 
 
