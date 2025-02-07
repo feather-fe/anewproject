@@ -4,9 +4,9 @@ window.testVariable = "Global variables work!";
 // Function to check if global variable is accessible
 function checkGlobalVariable() {
     if (window.testVariable) {
-        console.log("✅ Success:", window.testVariable);
+        alert("✅ Success:", window.testVariable);
     } else {
-        console.log("❌ Failed: Global variables are not accessible.");
+        alert("❌ Failed: Global variables are not accessible.");
     }
 }
 
