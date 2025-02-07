@@ -37,5 +37,5 @@ document.addEventListener("DOMContentLoaded", () => {
         terminal.appendChild(output);
     }
 
-    window.printToTerminal = appendOutput;
+    window.printToTerminal = appendOutput("freaking awesome");
 });
