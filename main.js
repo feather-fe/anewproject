@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                   <p class="output">Type 'login [username]' or 'signup [username]' to proceed.</p>`;
         } else {
             appendOutput(`Unknown command: ${command}`, "error");
+            alert("Unknown command: " + command);
         }
 
         inputField.value = "";
