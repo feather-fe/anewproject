@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function processCommand() {
         let command = inputField.value.trim();
-
+        alert(command)
         if (command.startsWith("login ")) {
             let username = command.split(" ")[1];
             appendOutput(`Logging in as ${username}...`);
