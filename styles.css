@@ -1,28 +1,29 @@
 /* Full-screen terminal look */
-body {
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
     background-color: #0d0d0d;
     color: #d1d1d1;
     font-family: "Courier New", monospace;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+    flex-direction: column;
 }
 
-/* Terminal window */
+/* Terminal window (fills entire screen) */
 .terminal-container {
-    width: 80%;
-    max-width: 600px;
-    background-color: #0d0d0d;
-    padding: 15px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     overflow-y: auto;
+    padding: 15px;
 }
 
-/* Terminal output */
-.output {
-    margin: 5px 0;
-    white-space: pre-wrap;
+/* Terminal output (scrollable history) */
+#terminal {
+    flex-grow: 1;
+    overflow-y: auto;
 }
 
 /* System messages */
@@ -35,10 +36,13 @@ body {
     color: #ff5555; /* Soft red for errors */
 }
 
-/* Input line */
+/* Input section (stays at bottom) */
 .input-line {
     display: flex;
     align-items: center;
+    padding: 10px;
+    background: #0d0d0d;
+    width: 100%;
 }
 
 /* Terminal prompt */
