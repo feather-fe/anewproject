@@ -57,3 +57,4 @@ document.getElementById("terminal-input").addEventListener("keydown", async func
         }
     }
 });
+window.printToTerminal = printToTerminal;
