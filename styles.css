@@ -1,4 +1,4 @@
-/* Full-screen terminal look */
+/* Full-screen background */
 html, body {
     height: 100%;
     width: 100%;
@@ -8,32 +8,25 @@ html, body {
     color: #d1d1d1;
     font-family: "Courier New", monospace;
     display: flex;
-    flex-direction: column;
+    align-items: flex-start;  /* Align terminal to the top */
+    justify-content: flex-start; /* Align to the left */
 }
 
-/* Terminal window (fills entire screen) */
+/* Terminal window (positioned at top-left) */
 .terminal-container {
-    flex: 1;
+    width: 60vw; /* Adjust width for a realistic terminal size */
+    max-width: 800px; /* Prevent it from getting too wide */
+    height: 80vh; /* Allows scrolling like a real terminal */
     display: flex;
     flex-direction: column;
     overflow-y: auto;
     padding: 15px;
 }
 
-/* Terminal output (scrollable history) */
+/* Terminal output (scrollable) */
 #terminal {
     flex-grow: 1;
     overflow-y: auto;
-}
-
-/* System messages */
-.system {
-    color: #b5b08a; /* Muted yellow like Crosh */
-}
-
-/* Error messages */
-.error {
-    color: #ff5555; /* Soft red for errors */
 }
 
 /* Input section (stays at bottom) */
@@ -41,17 +34,16 @@ html, body {
     display: flex;
     align-items: center;
     padding: 10px;
-    background: #0d0d0d;
     width: 100%;
 }
 
 /* Terminal prompt */
 .prompt {
-    color: #d1d1d1; /* Off-white for prompt */
+    color: #d1d1d1;
     margin-right: 5px;
 }
 
-/* Fake terminal input */
+/* Terminal input */
 #terminal-input {
     background: none;
     border: none;
@@ -61,3 +53,4 @@ html, body {
     width: 100%;
     outline: none;
 }
+
