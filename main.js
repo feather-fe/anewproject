@@ -16,13 +16,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // If we're waiting for the password input from the user (for login):
             if (awaitingPassword) {
-                const enteredPassword = await hashPassword(input);
+                // Hash the entered password using hashPassword (from hasher.js)
+                const enteredPasswordHash = await hashPassword(input);
                 if (
                     currentUserRecord &&
                     currentUserRecord.fields &&
                     currentUserRecord.fields.password
                 ) {
-                    if (enteredPassword.toLowerCase() === currentUserRecord.fields.password.toLowerCase()) {
+                    // Debug: log both hashes for comparison
+                    console.log("Entered Hash:", enteredPasswordHash);
+                    console.log("Stored Hash:", currentUserRecord.fields.password);
+
+                    // Compare the computed hash with the stored hash
+                    if (enteredPasswordHash === currentUserRecord.fields.password) {
                         appendOutput("Login successful!", "system");
                         loggedIn = true;
                     } else {
@@ -37,6 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 inputField.focus();
                 return;
             }
+
             // If we're waiting for a new password input (for signup):
             if (awaitingNewPassword === true) {
                 const password = input;
@@ -51,11 +58,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 awaitingNewPassword = false;
                 return;
             }
+
             // Process commands normally
             appendOutput(`$ ${input}`, "user");
 
             const args = input.split(" ");
             const command = args.shift().toLowerCase();
+
             if (command === "signup") {
                 if (!args[0]) {
                     appendOutput("Usage: signup [username]", "error");
