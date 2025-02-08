@@ -24,7 +24,7 @@ html, body {
 /* Terminal output (scrollable history) */
 #terminal {
     width: 100%;
-    height: calc(100% -200px); /* Adjust if needed, leaving room for the input line */
+    height: calc(90% -200px); /* Adjust if needed, leaving room for the input line */
     overflow-y: auto;
 }
 
