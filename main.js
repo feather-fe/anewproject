@@ -36,7 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 awaitingPassword = false;
                 return;
             }
-
             // Otherwise, process the command normally.
             printToTerminal(`$ ${input}`, "user");
 
@@ -80,9 +79,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 currentUserRecord = null;
             } else if (command === "") {
                 // Do nothing if the user presses Enter without typing anything.
-            } else if (command === "debug data") {
+            } else if (command === "debug") {
                 // Debugging command to display the current user record.
                 console.log("Current user record:", currentUserRecord);
+                appendOutput("Check the console for the current user record.", "system");
             } else {
                 appendOutput(`Unknown command: ${command}`, "error");
             }
