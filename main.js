@@ -68,10 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     awaitingNewPassword = true;
                     appendOutput("Please enter a new password:", "system");
                 }
-            }
-
-            if (command === "login") {
-            if (command === "login") {
+            } else if (command === "login") {
                 if (!args[0]) {
                     appendOutput("Usage: login [username]", "error");
                     return;
@@ -93,10 +90,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     appendOutput("Error: User not found.", "error");
                     console.error("Login failed: User not found.");
                 }
-            } else if (command === "signup") {
-                appendOutput(`Signing up as ${args[0]}...`, "system");
-                // Add your signup functionality here.
-            
             } else if (command === "help") {
                 appendOutput("Commands: login [username], signup [username], clear", "system");
             } else if (command === "clear") {
