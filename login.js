@@ -25,6 +25,5 @@ async function getUserByUsername(username) {
         return null;
     }
 }
-
 // Expose the function globally so main.js can use it.
 window.getUserByUsername = getUserByUsername;

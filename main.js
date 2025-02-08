@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // State variables for the login process
     let awaitingPassword = false;
     let currentUserRecord = null;
+    let loggedIn = false;
 
     inputField.addEventListener("keydown", async function (event) {
         if (event.key === "Enter") {
@@ -23,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 ) {
                     if (enteredPassword === currentUserRecord.fields.password) {
                         appendOutput("Login successful!", "system");
+                        loggedIn = true;
                     } else {
                         appendOutput("Incorrect password. Login failed.", "error");
                         console.error("Incorrect password for user:", currentUserRecord.fields.username);
@@ -32,7 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
                 // Reset login state
                 awaitingPassword = false;
-                currentUserRecord = null;
                 return;
             }
 
@@ -49,7 +50,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
                 const username = args[0];
                 appendOutput(`Attempting login for ${username}...`, "system");
-
+                if (loggedIn === true) {
+                    appendOutput("You are already logged in.", "system");
+                    return;
+                }
                 // Call the Airtable function (from login.js) to fetch the user record.
                 const userRecord = await getUserByUsername(username);
                 if (userRecord) {
@@ -64,11 +68,16 @@ document.addEventListener("DOMContentLoaded", () => {
             } else if (command === "signup") {
                 appendOutput(`Signing up as ${args[0]}...`, "system");
                 // Add your signup functionality here.
+            
             } else if (command === "help") {
                 appendOutput("Commands: login [username], signup [username], clear", "system");
             } else if (command === "clear") {
                 terminal.innerHTML = `<p class="output">DLI: The Lost Levels Terminal v1.0</p>
                                       <p class="output">Type 'login [username]' or 'signup [username]' to proceed.</p>`;
+            } else if (command === "logout") {
+                appendOutput("Logging out...", "system");
+                loggedIn = false;
+                currentUserRecord = null;
             } else {
                 appendOutput(`Unknown command: ${command}`, "error");
             }
