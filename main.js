@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
                 // Reset login state
                 awaitingPassword = false;
+                inputField.focus();
                 return;
             }
             // If we're waiting for a new password input (for signup):
