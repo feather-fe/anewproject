@@ -16,13 +16,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // If we're waiting for the password input from the user (for login):
             if (awaitingPassword) {
-                const enteredPassword = hashPassword(input);
+                const enteredPassword = await hashPassword(input);
                 if (
                     currentUserRecord &&
                     currentUserRecord.fields &&
                     currentUserRecord.fields.password
                 ) {
-                    if (enteredPassword === currentUserRecord.fields.password) {
+                    if (enteredPassword.toLowerCase() === currentUserRecord.fields.password.toLowerCase()) {
                         appendOutput("Login successful!", "system");
                         loggedIn = true;
                     } else {
