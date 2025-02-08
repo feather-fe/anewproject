@@ -81,8 +81,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Do nothing if the user presses Enter without typing anything.
             } else if (command === "debug") {
                 // Debugging command to display the current user record.
-                console.log("Current user record:", currentUserRecord);
-                appendOutput("Check the console for the current user record.", "system");
+                if (currentUserRecord) {
+                    console.log("Current user record:", currentUserRecord);
+                    appendOutput("Check the console for the current user record.", "system");
+                } else {
+                    appendOutput("No user is currently logged in.", "system");
+                }
             } else {
                 appendOutput(`Unknown command: ${command}`, "error");
             }
