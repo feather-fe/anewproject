@@ -14,9 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const input = inputField.value.trim();
             inputField.value = "";
 
-            // If we're waiting for the password input from the user:
+            // If we're waiting for the password input from the user (for login):
             if (awaitingPassword) {
-                // Treat this input as the password attempt
                 const enteredPassword = input;
                 if (
                     currentUserRecord &&
@@ -37,19 +36,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 awaitingPassword = false;
                 return;
             }
-            // If we're waiting for a new password input from the user:
+            // If we're waiting for a new password input (for signup):
             if (awaitingNewPassword === true) {
                 const password = input;
+                // Hash the new password using your hashPassword function
                 const hashedPassword = await hashPassword(password);
+                // Use the username stored in the placeholder record
                 const username = currentUserRecord.fields.username;
+                // Call your signUp function to write the new user record to Airtable
                 await signUp(username, hashedPassword);
                 appendOutput("Signup successful!", "system");
                 loggedIn = true;
                 awaitingNewPassword = false;
                 return;
             }
-            // If we're not waiting for a password, process the command normally.
-            // Otherwise, process the command normally.
+            // Process commands normally
             appendOutput(`$ ${input}`, "user");
 
             const args = input.split(" ");
@@ -57,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (command === "signup") {
                 if (!args[0]) {
                     appendOutput("Usage: signup [username]", "error");
-                    return
+                    return;
                 }
                 const username = args[0];
                 appendOutput(`Signing up as ${username}...`, "system");
@@ -65,6 +66,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (userRecord) {
                     appendOutput("Error: Username already exists.", "error");
                 } else {
+                    // Set a placeholder user record with the new username
+                    currentUserRecord = { fields: { username: username } };
                     awaitingNewPassword = true;
                     appendOutput("Please enter a new password:", "system");
                 }
@@ -79,10 +82,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     appendOutput("You are already logged in.", "system");
                     return;
                 }
-                // Call the Airtable function (from login.js) to fetch the user record.
                 const userRecord = await getUserByUsername(username);
                 if (userRecord) {
-                    // Save the record and switch to password prompt mode.
+                    // Save the record and prompt for password
                     currentUserRecord = userRecord;
                     awaitingPassword = true;
                     appendOutput("Please enter your password:", "system");
@@ -100,9 +102,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 loggedIn = false;
                 currentUserRecord = null;
             } else if (command === "") {
-                // Do nothing if the user presses Enter without typing anything.
+                // Do nothing if Enter is pressed with no input
             } else if (command === "debug") {
-                // Debugging command to display the current user record.
                 if (currentUserRecord) {
                     console.log("Current user record:", currentUserRecord);
                     appendOutput("Check the console for the current user record.", "system");
