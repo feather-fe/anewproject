@@ -36,11 +36,34 @@ document.addEventListener("DOMContentLoaded", () => {
                 awaitingPassword = false;
                 return;
             }
+            // If we're waiting for a new password input from the user:
+            if (awaitingNewPassword === true) {
+                const password = input;
+                const hashedPassword = await hashPassword(password);
+                await signUp(username, hashedPassword);
+                appendOutput("Signup successful!", "system");
+                loggedIn = true;
+                awaitingNewPassword = false;
+                return;
+            }
+            // If we're not waiting for a password, process the command normally.
             // Otherwise, process the command normally.
             printToTerminal(`$ ${input}`, "user");
 
             const args = input.split(" ");
             const command = args.shift().toLowerCase();
+            if (command === "signup") {
+                if (!args[0]) {
+                    appendOutput("Usage: signup [username]", "error");
+                    return
+                }
+                const username = args[0];
+                appendOutput(`Signing up as ${username}...`, "system");
+                const userRecord = await getUserByUsername(username);
+                if (userRecord) {
+                    appendOutput("Error: Username already exists.", "error");
+                    console.error("Signup failed: Username already exists.");
+                } else {
 
             if (command === "login") {
                 if (!args[0]) {
