@@ -15,7 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 const command = args.shift();
 
                 if (command === "login") {
-                    await getPasswordByUsername(args); // Call the login function
+                    // Pass the username (first element of args) to getPasswordByUsername
+                    await getPasswordByUsername(args[0]);
                 } else if (command === "signup") {
                     appendOutput(`Signing up as ${args[0]}...`);
                 } else if (command === "help") {
@@ -37,5 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
         terminal.appendChild(output);
     }
 
-    window.printToTerminal = appendOutput("freaking awesome");
+    // Assign the function itself without calling it
+    window.printToTerminal = appendOutput;
 });
