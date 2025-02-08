@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     currentUserRecord.fields &&
                     currentUserRecord.fields.password
                 ) {
-                    if (enteredPassword === currentUserRecord.fields.password) {
+                    if (hashPassword(enteredPassword) === currentUserRecord.fields.password) {
                         appendOutput("Login successful!", "system");
                         loggedIn = true;
                     } else {
