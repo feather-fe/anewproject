@@ -132,8 +132,13 @@ document.addEventListener("DOMContentLoaded", () => {
         output.className = `output ${type}`;
         output.textContent = text;
         terminal.appendChild(output);
+    
+        // Set a maximum number of messages that can be shown
+        const MAX_MESSAGES = 15;
+        while (terminal.childElementCount > MAX_MESSAGES) {
+            terminal.removeChild(terminal.firstChild);
+        }
     }
-
     // Expose appendOutput globally so that other files can access it if needed.
     window.printToTerminal = appendOutput;
 });
