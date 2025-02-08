@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             // If we're not waiting for a password, process the command normally.
             // Otherwise, process the command normally.
-            printToTerminal(`$ ${input}`, "user");
+            appendOutput(`$ ${input}`, "user");
 
             const args = input.split(" ");
             const command = args.shift().toLowerCase();
