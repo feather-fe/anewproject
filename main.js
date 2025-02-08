@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let awaitingPassword = false;
     let currentUserRecord = null;
     let loggedIn = false;
+    let awaitingNewPassword = false;
 
     inputField.addEventListener("keydown", async function (event) {
         if (event.key === "Enter") {
@@ -40,6 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (awaitingNewPassword === true) {
                 const password = input;
                 const hashedPassword = await hashPassword(password);
+                const username = currentUserRecord.fields.username;
                 await signUp(username, hashedPassword);
                 appendOutput("Signup successful!", "system");
                 loggedIn = true;
@@ -62,9 +64,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 const userRecord = await getUserByUsername(username);
                 if (userRecord) {
                     appendOutput("Error: Username already exists.", "error");
-                    console.error("Signup failed: Username already exists.");
                 } else {
+                    awaitingNewPassword = true;
+                    appendOutput("Please enter a new password:", "system");
+                }
+            }
 
+            if (command === "login") {
             if (command === "login") {
                 if (!args[0]) {
                     appendOutput("Usage: login [username]", "error");
