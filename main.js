@@ -78,6 +78,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 appendOutput("Logging out...", "system");
                 loggedIn = false;
                 currentUserRecord = null;
+            } else if (command === "") {
+                // Do nothing if the user presses Enter without typing anything.
+            } else if (command === "debug data") {
+                // Debugging command to display the current user record.
+                console.log("Current user record:", currentUserRecord);
             } else {
                 appendOutput(`Unknown command: ${command}`, "error");
             }
