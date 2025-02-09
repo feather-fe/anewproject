@@ -24,10 +24,10 @@ export function startFileManager(callback) {
             fileItems[currentSelection].classList.add("selected");
         }
     }
-    function keyHandler(e) {
-
     // Handle navigation
-    document.addEventListener("keydown", function keyHandler(e) {
+    document.addEventListener("keydown", keyHandler);
+
+    function keyHandler(e) {
         if (fileManager.style.display !== "block") return;
 
         if (e.key === "ArrowDown") {
@@ -45,16 +45,19 @@ export function startFileManager(callback) {
 
             if (selectedGimmicks.length >= 5) {
                 document.removeEventListener("keydown", keyHandler);
-                fileManager.style.display = "none";
-                terminalContainer.style.display = "block";
-    }
-
-    document.addEventListener("keydown", keyHandler);
-            }
         }
-    });
+    }
 }
 
 export function getSelectedGimmicks() {
     return selectedGimmicks;
-}
+};
+
+export function closeFileManager() {
+    const terminalContainer = document.getElementById("terminal-container");
+    const fileManager = document.getElementById("file-manager");
+
+    terminalContainer.style.display = "block";
+    fileManager.style.display = "none";
+};
+
