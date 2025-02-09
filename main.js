@@ -1,4 +1,5 @@
 import { startFileManager } from "./files";
+import { hashPassword, getUserByUsername, signUp } from "./auth";
 
 document.addEventListener("DOMContentLoaded", () => {
     const inputField = document.getElementById("terminal-input");
