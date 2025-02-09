@@ -1,6 +1,3 @@
-import { startFileManager } from "./files";
-import { hashPassword, getUserByUsername, signUp } from "./auth";
-
 document.addEventListener("DOMContentLoaded", () => {
     const inputField = document.getElementById("terminal-input");
     const terminal = document.getElementById("terminal");
@@ -153,18 +150,4 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     });
-    // Function to append output to the terminal
-    function appendOutput(text, type = "") {
-        let output = document.createElement("p");
-        output.className = `output ${type}`;
-        output.textContent = text;
-        terminal.appendChild(output);
-        // Set a maximum number of messages that can be shown
-        const MAX_MESSAGES = 15;
-        while (terminal.childElementCount > MAX_MESSAGES) {
-            terminal.removeChild(terminal.firstChild);
-        }
-    }
-    // Expose appendOutput globally so that other files can access it if needed.
-    window.printToTerminal = appendOutput;
 });
