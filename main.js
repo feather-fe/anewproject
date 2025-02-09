@@ -1,3 +1,5 @@
+import { startFileManager } from "./files";
+
 document.addEventListener("DOMContentLoaded", () => {
     const inputField = document.getElementById("terminal-input");
     const terminal = document.getElementById("terminal");
@@ -111,6 +113,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 appendOutput("Logging out...", "system");
                 loggedIn = false;
                 currentUserRecord = null;
+            } else if (command === "start") {
+                startFileManager(function (gimmicks) {
+                    console.log("Selected Gimmicks:", gimmicks);
+                });
             } else if (command === "") {
                 // Do nothing if Enter is pressed with no input
             } else if (command === "debug") {

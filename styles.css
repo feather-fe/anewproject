@@ -58,4 +58,35 @@ html, body {
     width: 100%;
     outline: none;
 }
+/* File Manager Styles */
+.file-manager {
+    width: 100vw;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#file-list {
+    list-style: none;
+    padding: 0;
+    width: 300px;
+}
+
+.file-item {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #444;
+    cursor: pointer;
+    text-align: center;
+    background-color: #222;
+}
+
+.file-item.selected {
+    background-color: #333;
+    border-color: #00ff00;
+}
 

@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="terminal-container">
+    <!-- Terminal UI (default view) -->
+    <div class="terminal-container" id="terminal-container">
         <div id="terminal">
             <p class="output">DLI: The Lost Levels v1.0</p>
-            <p class="output">Type `login [username]` or `signup [username]` to proceed.</p>
+            <p class="output">Type `start` to begin a run.</p>
         </div>
         <div class="input-line">
             <span class="prompt">$</span>
@@ -18,9 +19,23 @@
         </div>
     </div>
 
+    <!-- File Manager UI (hidden by default) -->
+    <div class="file-manager" id="file-manager" style="display: none;">
+        <h2>Select Your Gimmicks</h2>
+        <ul id="file-list">
+            <li class="file-item" data-gimmick="turbo">Turbo-Click Module</li>
+            <li class="file-item" data-gimmick="auto">Auto-Miner Upgrade</li>
+            <li class="file-item" data-gimmick="lag">Lag Reducer</li>
+            <li class="file-item" data-gimmick="combo">Combo Accelerator</li>
+            <li class="file-item" data-gimmick="debug">Debug Patch</li>
+        </ul>
+        <p id="instructions">Use the ↑ and ↓ keys to navigate and press Enter to select.</p>
+    </div>
+
     <script src="main.js"></script>
     <script src="login.js"></script>
     <script src="hasher.js"></script>
     <script src="signup.js"></script>
+    <script src="files.js"></script>
 </body>
 </html>
