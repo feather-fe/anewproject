@@ -1,6 +1,6 @@
 let selectedGimmicks = [];
 
-export function startFileManager(callback) {
+function startFileManager(callback) {
     const terminalContainer = document.getElementById("terminal-container");
     const fileManager = document.getElementById("file-manager");
     const fileList = document.getElementById("file-list");
@@ -13,9 +13,6 @@ export function startFileManager(callback) {
     terminalContainer.style.display = "none";
     fileManager.style.display = "block";
 
-    // Remove previous keydown event listener if any
-    document.removeEventListener("keydown", keyHandler);
-
     function updateSelection() {
         for (let i = 0; i < fileItems.length; i++) {
             fileItems[i].classList.remove("selected");
@@ -24,10 +21,10 @@ export function startFileManager(callback) {
             fileItems[currentSelection].classList.add("selected");
         }
     }
-    // Handle navigation
-    document.addEventListener("keydown", keyHandler);
+    updateSelection();
 
-    function keyHandler(e) {
+    // Handle navigation
+    document.addEventListener("keydown", function keyHandler(e) {
         if (fileManager.style.display !== "block") return;
 
         if (e.key === "ArrowDown") {
@@ -45,19 +42,13 @@ export function startFileManager(callback) {
 
             if (selectedGimmicks.length >= 5) {
                 document.removeEventListener("keydown", keyHandler);
+                fileManager.style.display = "none";
+                terminalContainer.style.display = "block";
+                callback(selectedGimmicks); // Send selection back
+            }
         }
-    }
+    });
 }
 
-export function getSelectedGimmicks() {
-    return selectedGimmicks;
-};
-
-export function closeFileManager() {
-    const terminalContainer = document.getElementById("terminal-container");
-    const fileManager = document.getElementById("file-manager");
-
-    terminalContainer.style.display = "block";
-    fileManager.style.display = "none";
-};
-
+// Make startFileManager globally available
+window.startFileManager = startFileManager;
