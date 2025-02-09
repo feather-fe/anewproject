@@ -13,7 +13,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    inputField.addEventListener("keydown", async function (event) {
+    // Function to append output to the terminal
+    function appendOutput(text, type = "") {
+        let output = document.createElement("p");
+        output.className = `output ${type}`;
+        output.textContent = text;
+        terminal.appendChild(output);
+        // Set a maximum number of messages that can be shown
+        const MAX_MESSAGES = 15;
+        while (terminal.childElementCount > MAX_MESSAGES) {
+            terminal.removeChild(terminal.firstChild);
+        }
+    }
+    // Expose appendOutput globally so that other files can access it if needed.
+    window.printToTerminal = appendOutput;
+
+    inputField.addEventListener("keypress", async function (event) {
         if (event.key === "Enter") {
             event.preventDefault();
             const input = inputField.value.trim();
@@ -33,9 +48,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     console.log("Stored Hash:", currentUserRecord.fields.password);
 
                     // Compare the computed hash with the stored hash
-                    if (enteredPasswordHash === currentUserRecord.fields.password) {
+                    if (currentUserRecord && currentUserRecord.fields && enteredPasswordHash === currentUserRecord.fields.password) {
                         appendOutput("Login successful!", "system");
-                        loggedIn = true;
+                        if (!loggedIn) {
+                            loggedIn = true;
+                        } else {
+                            appendOutput("You are already logged in.", "system");
+                        }
                     } else {
                         appendOutput("Incorrect password. Login failed.", "error");
                         console.error("Incorrect password for user:", currentUserRecord.fields.username);
