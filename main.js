@@ -11,6 +11,21 @@ document.addEventListener("DOMContentLoaded", () => {
     let loggedIn = false;
     let awaitingNewPassword = false;
 
+    // Function to append output to the terminal
+    function appendOutput(text, type = "") {
+        let output = document.createElement("p");
+        output.className = `output ${type}`;
+        output.textContent = text;
+        terminal.appendChild(output);
+        // Set a maximum number of messages that can be shown
+        const MAX_MESSAGES = 15;
+        while (terminal.childElementCount > MAX_MESSAGES) {
+            terminal.removeChild(terminal.firstChild);
+        }
+    }
+    // Expose appendOutput globally so that other files can access it if needed.
+    window.printToTerminal = appendOutput;
+
     inputField.addEventListener("keydown", async function (event) {
         if (event.key === "Enter") {
             event.preventDefault();
