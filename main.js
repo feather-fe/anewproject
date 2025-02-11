@@ -45,13 +45,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     console.log("Stored Hash:", currentUserRecord.fields.password);
 
                     // Compare the computed hash with the stored hash
-                    if (currentUserRecord && currentUserRecord.fields && enteredPasswordHash === currentUserRecord.fields.password) {
+                    if (enteredPasswordHash === currentUserRecord.fields.password) {
                         appendOutput("Login successful!", "system");
-                        if (!loggedIn) {
-                            loggedIn = true;
-                        } else {
-                            appendOutput("You are already logged in.", "system");
-                        }
+                        loggedIn = true;
                     } else {
                         appendOutput("Incorrect password. Login failed.", "error");
                         console.error("Incorrect password for user:", currentUserRecord.fields.username);
