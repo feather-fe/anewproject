@@ -8,4 +8,3 @@ global.gimmicks.items = [
     global.gimmicks.tuple('image2.png', 'Item 2', 'Description for item 2'),
     global.gimmicks.tuple('image3.png', 'Item 3', 'Description for item 3')
 ];
-global.gimmicks.items.push(global.gimmicks.tuple('image4.png', 'Item 4', 'Description for item 4'));
