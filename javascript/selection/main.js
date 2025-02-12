@@ -3,6 +3,6 @@ document.addEventListener("DOMContentLoaded",() => {
     const gimmickDisplay = document.getElementById("file-list");
     const nextGimmick = document.createElement("li");
     for (const gimmick of currentGimmicks) {
-        nextGimmick.innerHTML = currentGimmicks[index];
+        nextGimmick.innerHTML = currentGimmicks[gimmick];
     }
 });
