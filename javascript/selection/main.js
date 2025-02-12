@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded",() => {
-    gimmicks =
-
-
+    currentGimmicks = global.gimmicks.items;
+    
 });

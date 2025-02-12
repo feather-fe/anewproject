@@ -8,8 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let loggedIn = false;
     let awaitingNewPassword = false;
 
-
-
     // Function to append output to the terminal
     function appendOutput(text, type = "") {
         let output = document.createElement("p");
@@ -25,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Expose appendOutput globally so that other files can access it if needed.
     window.printToTerminal = appendOutput;
 
-    inputField.addEventListener("keypress", async function (event) {
+    inputField.addEventListener("keydown", async function (event) {
         if (event.key === "Enter") {
             event.preventDefault();
             const input = inputField.value.trim();
