@@ -128,8 +128,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 currentUserRecord = null;
             } else if (command === "start") {
                 appendOutput("Starting the game...", "system");
-                const terminalContainer = document.getElementById("terminal_container");
-                const fileManager = document.getElementById("file_manager");
+                const terminalContainer = document.getElementById("terminal-container");
+                const fileManager = document.getElementById("file-manager");
                 if (terminalContainer && fileManager) {
                     terminalContainer.style.display = "none";
                     fileManager.style.display = "block";
