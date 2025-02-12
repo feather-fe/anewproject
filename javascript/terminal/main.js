@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 loggedIn = false;
                 currentUserRecord = null;
             } else if (command === "start") {
-                appendOutput("Starting game...", "system");
+                appendOutput("Starting the game...", "system");
                 document.getElementById("terminal_container").style.display = "none";
                 document.getElementById("file_manager").style.display = "block";
             } else if (command === "") {
