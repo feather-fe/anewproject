@@ -129,8 +129,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 loggedIn = false;
                 currentUserRecord = null;
             } else if (command === "start") {
-                startFileManager(function (gimmicks) {
-                    console.log("Selected Gimmicks:", gimmicks);
+                appendOutput("Starting game...", "system");
+                window.location.href = "./templates/selection.html";
                 });
             } else if (command === "") {
                 // Do nothing if Enter is pressed with no input
