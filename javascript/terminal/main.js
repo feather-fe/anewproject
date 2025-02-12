@@ -128,7 +128,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 currentUserRecord = null;
             } else if (command === "start") {
                 appendOutput("Starting game...", "system");
-                window.location.href = "./templates/selection.html";
+                document.getElementById(terminal_container).style.display = "none";
+                document.getElementById(file_manager).style.display = "block";
             } else if (command === "") {
                 // Do nothing if Enter is pressed with no input
             } else if (command === "debug") {
