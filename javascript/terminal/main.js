@@ -128,8 +128,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 currentUserRecord = null;
             } else if (command === "start") {
                 appendOutput("Starting the game...", "system");
-                document.getElementById("terminal_container").style.display = "none";
-                document.getElementById("file_manager").style.display = "block";
+                const terminalContainer = document.getElementById("terminal_container");
+                const fileManager = document.getElementById("file_manager");
+                if (terminalContainer && fileManager) {
+                    terminalContainer.style.display = "none";
+                    fileManager.style.display = "block";
+                } else {
+                    appendOutput("Error: Required elements not found.", "error");
+                }
             } else if (command === "") {
                 // Do nothing if Enter is pressed with no input
             } else if (command === "debug") {
