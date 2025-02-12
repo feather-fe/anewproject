@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 currentUserRecord = null;
             } else if (command === "start") {
                 appendOutput("Starting game...", "system");
-                window.location.href = "templates/selection.html";
+                window.location.href = "anewproject/templates/selection.html";
             } else if (command === "") {
                 // Do nothing if Enter is pressed with no input
             } else if (command === "debug") {
