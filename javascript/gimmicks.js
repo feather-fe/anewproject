@@ -5,6 +5,6 @@ gimmicks.push({
     text2: 'Second piece of text'
 });
 window.gimmicks = {
-    items: gimmicks
+    gimmicks
 };
 //
