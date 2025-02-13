@@ -12,7 +12,7 @@ for (const gimmick of currentGimmicks) {
     nextGimmick.innerHTML = `<hr>`;
     gimmickDisplay.appendChild(nextGimmick);
 }
+alert("Gimmicks loaded" + currentGimmicks);
 }
-
 window.loadGimmicks = loadGimmicks;
 

@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     appendOutput("Error: Required elements not found.", "error");
                 }
                 loadGimmicks();
-                console.log("Gimmicks loaded." + window.gimmicks.items);
+                console.log("Gimmicks loaded." + window.currentGimmicks);
             } else if (command === "") {
                 // Do nothing if Enter is pressed with no input
             } else if (command === "debug") {
