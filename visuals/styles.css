@@ -1,124 +1,47 @@
-/* Ensure the entire document fills the viewport */
-html, body {
-    height: 100%;
-    width: 100%;
+/* style.css */
+
+body {
+    font-family: sans-serif;
+    background: #fdf6e3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 0;
-    padding: 0;
-    background-color: #0d0d0d;
-    color: #d1d1d1;
-    font-family: "Courier New", monospace;
-}
-
-/* Terminal container fills the entire screen */
-.terminal-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
     height: 100vh;
-    padding: 15px;
-    box-sizing: border-box; /* Includes padding in the width/height calculations */
-    overflow-y: auto;
 }
-
-/* Terminal output (scrollable history) */
-#terminal {
-    width: 100%;
-    height: calc(90% -200px); /* Adjust if needed, leaving room for the input line */
-    overflow-y: auto;
-}
-
-/* Input section (stays at the bottom with a visible box) */
-.input-line {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 5px;
-    background: #1a1a1a;
-    border-top: 1px solid #333;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-}
-
-/* Terminal prompt */
-.prompt {
-    color: #d1d1d1;
-    margin-right: 5px;
-}
-
-/* Terminal input */
-#terminal-input {
-    background: none;
-    border: none;
-    color: #d1d1d1;
-    font-size: 16px;
-    font-family: inherit;
-    width: 100%;
-    outline: none;
-}
-/* File Manager Styles */
-.file-manager {
-    width: 100vw;
-    height: 100vh;
-    padding: 20px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-#file-list {
-    list-style: none;
-    padding: 0;
-    width: 300px;
-}
-
-.file-item {
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #444;
-    cursor: pointer;
-    text-align: center;
-    background-color: #222;
-}
-
-.file-item.selected {
-    background-color: #333;
-    border-color: #00ff00;
-}
-.file-manager {
-    width: 100vw;
-    height: 100vh;
-    padding: 20px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #0d0d0d;
-    color: #d1d1d1;
+  #grid-container {
+    width: 80vw;
+    height: 80vh;
+    overflow: scroll;
+    border: 2px solid #000000;
+    background: #fdf6e3;
   }
-  #file-list {
-    list-style: none;
-    padding: 0;
-    width: 300px;
+  
+  #reactor-grid {
+    display: grid;
+    grid-template-columns: repeat(100, 32px);
+    grid-template-rows: repeat(100, 32px);
+    gap: 1px;
+    margin-top: 10px;
+    border-collapse: collapse;
   }
-  .file-item {
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #444;
-    cursor: pointer;
-    text-align: center;
-    background-color: #222;
+  
+  /* Base tile style */
+  .tile {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #000000;
+    background-size: cover;
+    border-radius: 2px;
+    transition: 0.2s;
   }
-  .file-item.selected {
-    background-color: #333;
-    border-color: #00ff00;
-  }
-  #instructions {
-    margin-top: 20px;
-    font-style: italic;
-  }
+  
+  /* Example material colors */
+  .tile.uranium { background-color: #78ff89; }
+  .tile.graphite { background-color: #444; }
+  .tile.boron { background-color: #9e91ff; }
+  .tile.water { background-color: #58b6f1; }
+  .tile.steam { background-color: #c0e5f9; }
+  .tile.lead { background-color: #888; }
+  .tile.steel { background-color: #bbb; }
+  .tile.air { background-color: #1c1c1c; border: 1px dashed #333; }

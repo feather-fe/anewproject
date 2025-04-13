@@ -3,37 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DLI: The Lost Levels</title>
+    <title>Reactor Grid</title>
     <link rel="stylesheet" href="./visuals/styles.css">
 </head>
 <body>
-    <!-- Terminal UI (default view) -->
-    <div class="terminal-container" id="terminal-container" style="display: block;">
-        <div id="terminal">
-            <p class="output">DLI: The Lost Levels alpha 0.6</p>
-            <p class="output">Type login [username] or signup [username]</p>
-        </div>
-        <div class="input-line">
-            <span class="prompt">$</span>
-            <input type="text" id="terminal-input" autofocus>
-        </div>
+    <h1>Reactor Grid</h1>
+    <div id="grid-container">
+        <div id="reactor-grid"></div>
     </div>
-
-    <!-- File Manager UI (hidden by default) -->
-    <div class="file-manager" id="file-manager" style="display: none;">
-        <h2>Select Your Gimmicks</h2>
-        <ul id="file-list">
-            
-        </ul>
-        <p id="instructions">Use the ↑ and ↓ keys to navigate and press Enter to select.</p>
-    </div>
-
-    <script src="./javascript/terminal/main.js"></script>
-    <script src="./javascript/terminal/login.js"></script>
-    <script src="./javascript/terminal/hasher.js"></script>
-    <script src="./javascript/terminal/signup.js"></script>
-    <script src="./javascript/selection/main.js"></script>
-    <script src="./javascript/gimmicks.js"></script>
-    <script src="./javascript/selection/selection_main.js"></script>
+    <script src="javascript/main.js"></script>
 </body>
 </html>
